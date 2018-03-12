@@ -1,0 +1,5 @@
+﻿@model IEnumerable<StokTakip.Models.Raf>
+<div class="form-group">
+        <label class="display-block">Raf Seçiniz</label>
+        @Html.DropDownList("RafID", (SelectList)ViewBag.Raf, new { @class = "select-border-color border-warning", @multiple = "multiple" })
+    </div>

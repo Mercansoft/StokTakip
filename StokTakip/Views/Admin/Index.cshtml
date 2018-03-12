@@ -1,0 +1,281 @@
+﻿@model StokTakip.KategoriUrun
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Tasarim/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="header-content">
+        <div class="page-title"><i class="icon-display4"></i> Anasayfa</div>
+        <ul class="breadcrumb">
+            <li><a href="/Admin">Anasayfa</a></li>
+            <li><a href="/Admin">Anasayfa</a></li>
+            <li class="active"><a href="#">Yönetici Panel</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid page-content">
+
+    @Html.Action("_Istatistik", "Tasarim")
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <form class="form-horizontal" action="/Admin/Sorgu" method="post">
+                @*@Html.AntiForgeryToken()*@
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Barcod</h4>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Barcod Giriniz</label>
+                                <div class="col-lg-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="icon-user"></i></span>
+                                        <input type="text" class="form-control" name="Barcod" placeholder="Barcod Giriniz">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                    </div>
+                </div>
+
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <h5 class="no-margin-top"></h5>
+                        <button type="submit" class="btn btn-success">Gönder</button>
+
+                    </div>
+                </div>
+            </form>
+            <div class="panel panel-flat">
+
+                <div class="panel-body no-padding-bottom">
+                    @if (Model != null)
+    {
+                <table class="table table-condensed" border="1">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <center>
+                                    <img src="/Content/images/logo.png" /><br />
+                                    STOKCO YARI MAMÜL<br />
+                                    GİRİŞ FORMU
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    @if (Model.UrunK != null)
+                                    {
+                        <img src='@Url.Action("Borcode", "Kategori", new { kod = Model.UrunK.Barcod })' /><br />
+                        <font size="4px">  <b> * @Model.UrunK.Barcod * </b></font>
+                                    }
+                                    else if (Model.Urun != null)
+                                    {
+                <img src='@Url.Action("Borcode", "Urun", new { kod = Model.Urun.Barcod })' /><br />
+                <font size="4px">  <b> * @Model.Urun.Barcod * </b></font>
+                                    }
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <font size="2px">
+                                    <b> ÜRÜN ADI  </b>
+                                </font>
+                            </td>
+                            <td>
+                                @if (Model.UrunK != null)
+                                {
+                                    if (Model.UrunK.UrunAdi != null)
+                                    {
+                        <font size="2px">
+                            <b>  @Model.UrunK.UrunAdi </b>
+                        </font>
+                                    }
+                                }
+                                else
+                                {
+                                    if (Model.Urun.UrunAdi != null)
+                                    {
+                <font size="2px">
+                    <b>  @Model.Urun.UrunAdi </b>
+                </font>
+                                    }
+                                }
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font size="2px">
+                                    <b> ÜRÜN KODU  </b>
+                                </font>
+                            </td>
+                            <td>
+                                @if (Model.UrunK != null)
+                                {
+                    <font size="2px">
+                        <b>  @Model.UrunK.UrunKodu </b>
+                    </font>
+                                }
+                                else
+                                {
+                <font size="2px">
+                    <b>  @Model.Urun.UrunKodu </b>
+                </font>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <font size="2px">
+                                    <b> STOK MİKTARI  </b>
+                                </font>
+                            </td>
+                            <td>
+                                @if (Model.UrunK != null)
+                                {
+                                    if (Model.UrunK.StokMiktar != null)
+                                    {
+                        <font size="2px">
+                            <b> @Model.UrunK.StokMiktar  </b>
+                        </font>
+                                    }
+                                }
+                                else
+                                {
+                                    if (Model.Urun.StokMiktar != null)
+                                    {
+                <font size="2px">
+                    <b> @Model.Urun.StokMiktar  </b>
+                </font>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                        @if (Session["id"] != null)
+                        {
+                <tr>
+                    <td>
+                        <font size="2px">
+                            <b>  ALIŞ FİYAT </b>
+                        </font>
+                    </td>
+                    <td>
+                        @if (Model.UrunK != null)
+                        {
+                            if (Model.UrunK.AlisFiyat != null)
+                            {
+                <font size="2px">
+                    <b> @Model.UrunK.AlisFiyat  </b>
+                </font>
+                            }
+                        }
+                        else
+                        {
+                            if (Model.Urun.AlisFiyat != null)
+                            {
+                <font size="2px">
+                    <b> @Model.Urun.AlisFiyat  </b>
+                </font>
+                            }
+                        }
+                    </td>
+                </tr>
+                        }
+                        <tr>
+                            <td>
+                                <font size="2px">
+                                    <b>  SATIŞ FİYATI  </b>
+                                </font>
+                            </td>
+                            <td>
+                                @if (Model.UrunK != null)
+                                {
+                                    if (Model.UrunK.SatisFiyat != null)
+                                    {
+                        <font size="2px">
+                            <b> @Model.UrunK.SatisFiyat  </b>
+                        </font>
+                                    }
+                                }
+                                else
+                                {
+                                    if (Model.Urun.SatisFiyat != null)
+                                    {
+                <font size="2px">
+                    <b> @Model.Urun.SatisFiyat  </b>
+                </font>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <form class="form-horizontal" action="/Admin/StokGuncelle" method="post">
+                    @*@Html.AntiForgeryToken()*@
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Stok Güncelle</h4>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Stok Miktarı</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group">
+                                            <input id="prodId" name="StokID" type="hidden" value="@Model.Urun.UrunID">
+                                            <input type="text" class="form-control" name="StokMiktar" value="@Model.Urun.StokMiktar">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <div class="input-group">
+                                            <button type="submit" class="btn btn-success">Gönder</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                        </div>
+                    </div>
+
+                    
+                </form>
+}
+else
+{
+                <p>Ürün Bulunamadı.</p>
+}
+                </div>
+                @*}
+                else
+                {
+                    <p>Ürün Bulunamadı.</p>
+                }*@
+
+            </div>
+        </div>
+
+    </div>
+
+    @*@Html.Action("_SonUrunler", "Tasarim")*@
+
+    <!--Rightbar Chat-->
+    @*@Html.Action("_Sohbet", "Tasarim")*@
+    <!--/Rightbar Chat-->
+
+</div>
+

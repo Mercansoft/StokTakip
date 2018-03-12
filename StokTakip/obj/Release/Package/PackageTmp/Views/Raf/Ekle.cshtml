@@ -1,0 +1,123 @@
+﻿@model IEnumerable<StokTakip.Models.Raf>
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Tasarim/_LayoutForm.cshtml";
+}
+
+
+<div class="header">
+    <div class="header-content">
+        <div class="page-title">
+            <i class="icon-select2 position-left"></i> Raf Ekleme Paneli
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/Anasayfa/">Anasayfa</a></li>
+            <li>Raf Ekleme </li>
+            <li>Raflar</li>
+            <li class="active">Raf Ekleme Paneli</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid page-content">
+    <form class="form-horizontal" action="/Raf/Ekle" method="post">
+        @Html.AntiForgeryToken()
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h4 class="panel-title">Raf Ekle</h4>
+            </div>
+
+            <div class="panel-body">
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Raf Adı</label>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input type="text" class="form-control" name="RafAdi">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Açıklama</label>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <textarea rows="8" cols="150" name="Aciklama" class="form-control" placeholder="Açıklama Giriniz"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+        </div>
+
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <h5 class="no-margin-top"></h5>
+                <button type="submit" class="btn btn-success">Ekle</button>
+
+            </div>
+        </div>
+    </form>
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Raf Listesi</h5>
+        </div>
+
+        <table class="table datatable datatable-column-search-selects">
+            <thead>
+                <tr>
+                    <th class="col-md-1"># ID</th>
+                    <th class="col-md-1">Raf Adı</th>
+                    <th class="col-md-1">Açıklama</th>
+                    <th class="col-md-1 text-center">Admin</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.RafID</td>
+                        <td>@item.RafAdi</td>
+                        <td>@item.Aciklama</td>
+                        <td class="col-md-1 text-center">
+                            @*<a href="/Raf/Sil/@item.KullaniciID" class="edit-row">
+                                <span class="label label-danger"> Sil</span>
+                            </a>&nbsp;&nbsp;*@
+                            <a href="/Raf/Duzenle/@item.RafID" class="delete-row">
+                                <span class="label label-info"> Düzenle </span>
+                            </a>&nbsp;&nbsp;
+                            @*<ul class="icons-list">
+                                    <li><a href="/Urun/Detay/@item.UrunID" data-toggle="modal" data-target="#invoice" title="Görüntülen"><i class="icon-eye2"></i></a></li>
+                                    <li class="dropdown">
+                                        <a href="datatable_advanced.html#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="/Urun/Detay/@item.UrunID"><i class="icon-file-download2"></i> Detay</a></li>
+                                            <li><a href="/Urun/Duzenle/@item.UrunID"><i class="icon-file-download2"></i> Düzenle</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="/Urun/GirisGonder/@item.UrunID"><i class="icon-trash"></i> [ Depo Giriş ]</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th># ID</th>
+                    <th>Raf Adı</th>
+                    <th>Açıklama</th>
+                    <td class="col-md-1 text-center">Admin</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!--Rightbar Chat-->
+    <!--/Rightbar Chat-->
+
+</div>
+
+

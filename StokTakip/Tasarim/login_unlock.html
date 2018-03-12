@@ -1,0 +1,92 @@
+<!doctype html>
+<html style="height:100%">
+
+<!-- Mirrored from followtechnique.com/themes/penguin/demos/material/login_unlock.htm by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Mar 2017 05:13:27 GMT -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Penguin - Responsive admin dashboard template by Followtechnique</title>	
+	<link href="assets/images/favicon.ico" rel="apple-touch-icon" type="image/png" sizes="144x144">
+	<link href="assets/images/favicon.ico" rel="apple-touch-icon" type="image/png" sizes="114x114">
+	<link href="assets/images/favicon.ico" rel="apple-touch-icon" type="image/png" sizes="72x72">
+	<link href="assets/images/favicon.ico" rel="apple-touch-icon" type="image/png">
+	<link href="assets/images/favicon.ico" rel="icon" type="image/png">
+	<link href="assets/images/favicon.ico" rel="shortcut icon">
+	
+	<!-- Global stylesheets -->	
+	<link type="text/css" rel="stylesheet" href="assets/fonts/fonts.css">
+    <link type="text/css" rel="stylesheet" href="assets/icons/icomoon/icomoon.css">    
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">   
+	<link type="text/css" rel="stylesheet" href="css/core.css">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap-extended.css">	    		
+	<link type="text/css" rel="stylesheet" href="css/plugins.css">	    		
+	<link type="text/css" rel="stylesheet" href="css/color-system.css">
+	<!-- /global stylesheets -->
+
+</head>
+<body style="height:100%; background:url('assets/images/assets/login_bg.jpg') no-repeat 0 0; background-size:cover;">
+	<div class="login-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Simple login form -->
+			<form action="http://followtechnique.com/themes/penguin/demos/material/login_unlock.htm#">			
+				<div class="panel panel-body login-form border-left border-left-lg border-left-warning">							
+					<div class="text-center m-b-20">
+						<img src="assets/images/faces/face1.png" class="img-responsive img-rounded max-width-100" alt="">						
+						<h2>Jane Elliott</h2>
+						<h5>Unlock your dashboard</h5>
+					</div>
+
+					<div class="form-group has-feedback has-feedback-left">
+						<input type="password" class="form-control" placeholder="Password" name="password" required="required">
+						<div class="form-control-feedback">
+							<i class="icon-lock text-muted"></i>
+						</div>
+					</div>					
+
+					<div class="form-group">
+						<button type="button" class="btn btn-warning btn-labeled btn-labeled-right btn-block"><b><i class="icon-unlocked"></i></b> Unlock</button>								
+					</div>
+				</div>
+				
+			</form>
+			<!-- /simple login form -->
+
+
+			<!-- Footer -->
+			<div class="footer text-size-mini">
+				&copy; 2016 Penguin - Web app kit by <a href="http://followtechnique.com/" target="_blank">FollowTechnique</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;Version - 1.1.0
+			</div>
+			<!-- /footer -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+
+<!-- Global scripts -->
+<script type="text/javascript" src="js/jquery.js"></script>	
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/forms/uniform.min.js"></script>	
+<!-- /global scripts -->
+
+<script>
+$(function() {
+	$(".styled, .multiselect-container input").uniform({
+		radioClass: 'choice'
+	});
+	$('input,textarea').focus(function(){
+	   $(this).data('placeholder',$(this).attr('placeholder'))
+			  .attr('placeholder','');
+	}).blur(function(){
+	   $(this).attr('placeholder',$(this).data('placeholder'));
+	});
+});
+</script>	
+</body>
+
+<!-- Mirrored from followtechnique.com/themes/penguin/demos/material/login_unlock.htm by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Mar 2017 05:13:27 GMT -->
+</html>

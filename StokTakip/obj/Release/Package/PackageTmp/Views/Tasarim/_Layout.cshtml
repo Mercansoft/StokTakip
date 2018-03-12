@@ -1,0 +1,225 @@
+﻿
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Stokco - Stok Takip Sistemi</title>
+    <link href="/Tasarim/assets/images/favicon.ico" rel="apple-touch-icon" type="image/png" sizes="144x144">
+    <link href="/Tasarim/assets/images/favicon.ico" rel="apple-touch-icon" type="image/png" sizes="114x114">
+    <link href="/Tasarim/assets/images/favicon.ico" rel="apple-touch-icon" type="image/png" sizes="72x72">
+    <link href="/Tasarim/assets/images/favicon.ico" rel="apple-touch-icon" type="image/png">
+    <link href="/Tasarim/assets/images/favicon.ico" rel="icon" type="image/png">
+    <link href="/Tasarim/assets/images/favicon.ico" rel="shortcut icon">
+
+    <!-- Global stylesheets -->
+    <link type="text/css" rel="stylesheet" href="/Tasarim/assets/fonts/fonts.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/assets/icons/icomoon/icomoon.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/core.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/layout.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/bootstrap-extended.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/components.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/plugins.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/loaders.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/responsive.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/color-system.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/fancybox/jquery.fancybox.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/index1.html#" id="theme">
+    <!-- /global stylesheets -->
+</head>
+<body class="material-menu" id="top">
+    <div id="preloader">
+        <div id="status">
+            <div class="loader">
+                <div class="loader-inner ball-pulse">
+                    <div class="bg-blue"></div>
+                    <div class="bg-amber"></div>
+                    <div class="bg-success"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-nav clearfix">
+        <div class="top-search-bar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="search-input-addon">
+                            <span class="addon-icon"><i class="icon-search4"></i></span>
+                            <input type="text" class="form-control top-search-input" placeholder="Search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-left pull-left">
+            <div class="clearfix">
+                <ul class="left-branding pull-left">
+                    <li><span class="left-toggle-switch visible-handheld"><i class="icon-menu7"></i></span></li>
+                    <li>
+                        <a href="/Tasarim/index.html"><div class="logo"></div></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        @if (Session["id"] != null)
+        {
+            <div class="navbar-right pull-right">
+                <div class="clearfix">
+                    <ul class="pull-right top-right-icons">
+                        <li><a href="/Tasarim/index1.html#" class="btn-top-search"><i class="icon-search4"></i></a></li>
+                        <li class="dropdown user-dropdown">
+                            <a href="/Tasarim/index1.html#" class="btn-user dropdown-toggle hidden-xs" data-toggle="dropdown"><img src="@Session["resim"]" class="img-circle user" alt="" /></a>
+                            <a href="/Tasarim/index1.html#" class="dropdown-toggle visible-xs" data-toggle="dropdown"><i class="icon-more"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="text-center"><img src="@Session["resim"]" class="img-circle img-70" alt="" /></div>
+                                <h5 class="text-center"><b>Merhaba! @Session["isim"]</b></h5>
+                                <ul class="more-apps">
+                                    <li><a href="/Admin/Profil/@Session["id"]"><i class="icon-profile"></i> Profilim</a></li>
+                                    @*<li><a href="/Tasarim/index1.html#"><i class="icon-envelop5"></i> Inbox <span class="badge badge-danger pull-right">4</span></a></li>
+                                        <li><a href="/Tasarim/http://localhost/templates/penguin/material/user_profile_social.html"><i class="icon-cogs"></i> Profile settings</a></li>
+                                        <li><a href="/Tasarim/http://localhost/templates/penguin/material/login_unlock.html"><i class="icon-lock5"></i> Lock screen</a></li>*@
+                                </ul>
+                                <div class="text-center"><a href="/Admin/Cikis" class="btn btn-sm btn-info"><i class="icon-exit3 i-16 position-left"></i> Çıkış Yap</a></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="navbar-right pull-right">
+                <div class="clearfix">
+                    <ul class="pull-right top-right-icons">
+                        <li><a href="/Tasarim/index1.html#" class="btn-top-search"><i class="icon-search4"></i></a></li>
+                        <li class="dropdown user-dropdown">
+                            <a href="/Tasarim/index1.html#" class="btn-user dropdown-toggle hidden-xs" data-toggle="dropdown"><img src="@Session["_resim"]" class="img-circle user" alt="" /></a>
+                            <a href="/Tasarim/index1.html#" class="dropdown-toggle visible-xs" data-toggle="dropdown"><i class="icon-more"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="text-center"><img src="@Session["_resim"]" class="img-circle img-70" alt="" /></div>
+                                <h5 class="text-center"><b>Merhaba! @Session["_isim"]</b></h5>
+                                <ul class="more-apps">
+                                    <li><a href="/Admin/Bilgilerim/@Session["_id"]"><i class="icon-profile"></i> Profilim</a></li>
+                                    @*<li><a href="/Tasarim/index1.html#"><i class="icon-envelop5"></i> Inbox <span class="badge badge-danger pull-right">4</span></a></li>
+                                        <li><a href="/Tasarim/http://localhost/templates/penguin/material/user_profile_social.html"><i class="icon-cogs"></i> Profile settings</a></li>
+                                        <li><a href="/Tasarim/http://localhost/templates/penguin/material/login_unlock.html"><i class="icon-lock5"></i> Lock screen</a></li>*@
+                                </ul>
+                                <div class="text-center"><a href="/Admin/Cikis" class="btn btn-sm btn-info"><i class="icon-exit3 i-16 position-left"></i> Çıkış Yap</a></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+
+    </header>
+
+    <!--sidebar-->
+    <aside class="sidebar">
+        <div class="left-aside-container">
+            <div class="user-profile-container">
+                @if (Session["id"] != null)
+                {
+            <div class="user-profile clearfix">
+                <div class="admin-user-thumb">
+                    <img src="@Session["resim"]" alt="admin" class="img-circle">
+                </div>
+                <div class="admin-user-info">
+                    <ul class="user-info">
+                        <li><a href="#" class="text-semibold text-size-large">@Session["isim"]</a></li>
+                    </ul>
+                    <div class="logout-icon"><a href="/Admin/Cikis"><i class="icon-exit2"></i></a></div>
+                </div>
+
+            </div>
+                }
+
+                @if (Session["_id"] != null)
+                {
+            <div class="user-profile clearfix">
+                <div class="admin-user-thumb">
+                    <img src="@Session["_resim"]" alt="admin" class="img-circle">
+                </div>
+                <div class="admin-user-info">
+                    <ul class="user-info">
+
+                        <li><a href="#" class="text-semibold text-size-large">@Session["_isim"]</a></li>
+                    </ul>
+                    <div class="logout-icon"><a href="/Admin/Cikis"><i class="icon-exit2"></i></a></div>
+                </div>
+
+            </div>
+                }
+            </div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active" id="tab-menu"><a href="/Tasarim/index1.html#menu" aria-controls="menu" role="tab" data-toggle="tab"><i class="icon-home2"></i></a></li>
+            </ul>
+
+            <div class="tab-content">
+                @if (Session["id"] != null)
+                {
+            @Html.Action("_Menu", "Tasarim")
+                }
+                @if (Session["_id"] != null)
+                {
+            @Html.Action("_MenuUser", "Tasarim")
+                }
+            </div>
+        </div>
+    </aside>
+    <!--/sidebar-->
+    <!--Page Container-->
+    <section class="main-container">
+        <!--Page Header-->
+        <!--/Page Header-->
+
+        @RenderBody()
+
+        <!--Footer -->
+        @Html.Action("_Footer", "Tasarim")
+        <!--/Footer-->
+
+    </section>
+    <!--/Page Container-->
+
+
+    <a id="scrollTop" href="/Tasarim/index1.html#top"><i class="icon-arrow-up12"></i></a>
+
+    <!-- Global scripts -->
+    <script src="/Tasarim/js/jquery.js"></script>
+    <script src="/Tasarim/js/bootstrap.js"></script>
+    <script src="/Tasarim/js/jquery.ui.js"></script>
+    <script src="/Tasarim/js/nav.accordion.js"></script>
+    <script src="/Tasarim/js/hammerjs.js"></script>
+    <script src="/Tasarim/js/jquery.hammer.js"></script>
+    <script src="/Tasarim/js/scrollup.js"></script>
+    <script src="/Tasarim/js/jquery.slimscroll.js"></script>
+    <script src="/Tasarim/js/smart-resize.js"></script>
+    <script src="/Tasarim/js/blockui.min.js"></script>
+    <script src="/Tasarim/js/wow.min.js"></script>
+    <script src="/Tasarim/js/fancybox.min.js"></script>
+    <script src="/Tasarim/js/venobox.js"></script>
+    <script src="/Tasarim/js/forms/uniform.min.js"></script>
+    <script src="/Tasarim/js/forms/switchery.js"></script>
+    <script src="/Tasarim/js/forms/select2.min.js"></script>
+    <script src="/Tasarim/js/core.js"></script>
+    <!-- /global scripts -->
+    <!-- Page scripts -->
+    <script src="/Tasarim/https://www.google.com/jsapi"></script>
+    <script src="/Tasarim/js/pages/dashboard_minimalistic.js"></script>
+    <!-- /page scripts -->
+</body>
+
+</html>

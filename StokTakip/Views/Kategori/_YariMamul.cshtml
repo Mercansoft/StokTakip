@@ -1,0 +1,108 @@
+﻿@model IEnumerable<StokTakip.Models.KatUrun>
+<div class="panel panel-flat">
+    <div class="panel-heading">
+        <h5 class="panel-title">Yarı Mamül Ürünler</h5>
+    </div>
+
+    @*<div class="panel-body">
+            When displaying tables with a particularly large amount of data shown on each page, it can be useful to have the table's header and / or footer fixed to the top or bottom of the scrolling window. This lets your users quickly determine what each column refers to rather than needing to scroll back to the top of the table.
+        </div>*@
+
+    <div class="table-responsive">
+        <table class="table datatable datatable-header-basic">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ürün Adı</th>
+                    <th>Ürün Kodu</th>
+                    <th>Stok Miktarı</th>
+                    @if (Session["id"] != null)
+                    {
+                        <th>Alış Fiyatı</th>
+                        <th>Satış Fiyatı</th>
+                    }
+
+                    @*<th>İşlem</th>*@
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.UrunID
+                        </td>
+                        <td>
+                            @if (item.Urun.UrunAdi != null)
+                            {
+                                @item.Urun.UrunAdi
+                            }
+                            else
+                            {
+                                <b>Null</b>
+                            }
+                        </td>
+                        <td>
+                            @if (item.Urun.UrunKodu != null)
+                            {
+                                @item.Urun.UrunKodu
+                            }
+                            else
+                            {
+                                <b>Null</b>
+                            }
+
+                        </td>
+                        <td>
+                            @if (item.Urun.StokMiktar != null)
+                            {
+                                @item.Urun.StokMiktar.Value
+                            }
+                            else
+                            {
+                                <b>Null</b>
+                            }
+
+                        </td>
+@if (Session["id"] != null)
+{
+                        <td>
+
+                                @if (item.Urun.AlisFiyat != null)
+                                {
+                                    @item.Urun.AlisFiyat
+                                }
+                                else
+                                {
+                                    <b>Null</b>
+                                }
+                           
+                        </td>
+                        <td>
+                            @if (item.Urun.SatisFiyat != null)
+                            {
+                                @item.Urun.SatisFiyat
+                            }
+                            else
+                            {
+                                <b>Null</b>
+                            }
+                        </td>
+}
+
+                        @*<td>
+                            <a href="/Urun/Detay/@item.UrunID" class="edit-row">
+                                <span class="label label-danger"> Detay</span>
+                            </a>&nbsp;&nbsp;
+                            <a href="/Urun/Duzenle/@item.UrunID" class="delete-row">
+                                <span class="label label-info"> Düzenle </span>
+                            </a>&nbsp;&nbsp;
+                        </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

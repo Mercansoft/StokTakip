@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StokTakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+    </Key>
+    <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Barcod" Type="nvarchar" MaxLength="50" />
+    <Property Name="Resim" Type="nvarchar" MaxLength="250" />
+    <Property Name="UrunAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="UrunKodu" Type="nvarchar" MaxLength="50" />
+    <Property Name="StokMiktar" Type="int" />
+    <Property Name="AlisFiyat" Type="money" />
+    <Property Name="SatisFiyat" Type="money" />
+    <Property Name="GirisTarhi" Type="datetime" />
+    <Property Name="CikisTarih" Type="datetime" />
+    <Property Name="Durum" Type="bit" />
+    <Property Name="Aciklama" Type="ntext" />
+  </EntityType>
+  <EntityType Name="KatUrun">
+    <Key>
+      <PropertyRef Name="KatUrunID" />
+    </Key>
+    <Property Name="KatUrunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KategoriID" Type="int" />
+    <Property Name="UrunID" Type="int" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="KullaniciID" />
+    </Key>
+    <Property Name="KullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Yetki" Type="bit" />
+    <Property Name="Resim" Type="nvarchar" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="Raf">
+    <Key>
+      <PropertyRef Name="RafID" />
+    </Key>
+    <Property Name="RafID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RafAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Aciklama" Type="ntext" />
+  </EntityType>
+  <EntityType Name="RafUrun">
+    <Key>
+      <PropertyRef Name="RafUrunID" />
+    </Key>
+    <Property Name="RafUrunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RafID" Type="int" />
+    <Property Name="KategoriID" Type="int" />
+    <Property Name="UrunID" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Urun">
+    <Key>
+      <PropertyRef Name="UrunID" />
+    </Key>
+    <Property Name="UrunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Barcod" Type="nvarchar" MaxLength="50" />
+    <Property Name="Resim" Type="nvarchar" MaxLength="250" />
+    <Property Name="UrunAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="UrunKodu" Type="nvarchar" MaxLength="50" />
+    <Property Name="StokMiktar" Type="int" />
+    <Property Name="AlisFiyat" Type="money" />
+    <Property Name="SatisFiyat" Type="money" />
+    <Property Name="GirisTarhi" Type="datetime" />
+    <Property Name="CikisTarih" Type="datetime" />
+    <Property Name="Durum" Type="bit" />
+    <Property Name="Aciklama" Type="ntext" />
+  </EntityType>
+  <Association Name="FK_KatUrun_Kategori">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+    <End Role="KatUrun" Type="Self.KatUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriID" />
+      </Principal>
+      <Dependent Role="KatUrun">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KatUrun_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+    <End Role="KatUrun" Type="Self.KatUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="KatUrun">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RafUrun_Kategori">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+    <End Role="RafUrun" Type="Self.RafUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriID" />
+      </Principal>
+      <Dependent Role="RafUrun">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RafUrun_Raf">
+    <End Role="Raf" Type="Self.Raf" Multiplicity="0..1" />
+    <End Role="RafUrun" Type="Self.RafUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Raf">
+        <PropertyRef Name="RafID" />
+      </Principal>
+      <Dependent Role="RafUrun">
+        <PropertyRef Name="RafID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RafUrun_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+    <End Role="RafUrun" Type="Self.RafUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="RafUrun">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StokTakipModelStoreContainer">
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KatUrun" EntityType="Self.KatUrun" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Raf" EntityType="Self.Raf" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RafUrun" EntityType="Self.RafUrun" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Urun" EntityType="Self.Urun" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_KatUrun_Kategori" Association="Self.FK_KatUrun_Kategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="KatUrun" EntitySet="KatUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KatUrun_Urun" Association="Self.FK_KatUrun_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="KatUrun" EntitySet="KatUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RafUrun_Kategori" Association="Self.FK_RafUrun_Kategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="RafUrun" EntitySet="RafUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RafUrun_Raf" Association="Self.FK_RafUrun_Raf">
+      <End Role="Raf" EntitySet="Raf" />
+      <End Role="RafUrun" EntitySet="RafUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RafUrun_Urun" Association="Self.FK_RafUrun_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="RafUrun" EntitySet="RafUrun" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

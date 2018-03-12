@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Panel";
+    Layout = "~/Views/Tasarim/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="header-content">
+        <div class="page-title"><i class="icon-display4"></i> Anasayfa</div>
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Panel">Anasayfa</a></li>
+            <li><a href="/Admin/Panel">Anasayfa</a></li>
+            <li class="active"><a href="#">Kullanıcı Panel</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid page-content">
+
+    @Html.Action("_Istatistik", "Tasarim")
+
+    <div class="row">
+        @*@Html.Action("_SonIslem", "Tasarim")
+            @Html.Action("_SonGiris", "Tasarim")*@
+
+    </div>
+
+    @Html.Action("_SonUrunler", "Tasarim")
+
+    <!--Rightbar Chat-->
+    @*@Html.Action("_Sohbet", "Tasarim")*@
+    <!--/Rightbar Chat-->
+
+</div>
+
+
+

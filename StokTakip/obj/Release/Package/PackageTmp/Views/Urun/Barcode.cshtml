@@ -1,0 +1,188 @@
+﻿@model StokTakip.Models.Urun
+@{
+    ViewBag.Title = "Barcode";
+        Layout = "~/Views/Tasarim/_Layout.cshtml";
+}
+
+
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+
+<script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>
+<div class="header">
+    <div class="header-content">
+        <div class="page-title"><i class="icon-display4"></i> Yarı Mamül Barcode</div>
+        <ul class="breadcrumb">
+            <li><a href="/Admin">Anasayfa</a></li>
+            <li><a href="/Admin">Yarı Mamül Barcode</a></li>
+            <li class="active"><a href="#">Yarı Mamül Barcode</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid page-content">
+    <br />
+    <a href="/Urun/Barcode/@Model.UrunID" class="btn btn-wide btn-success"><i class="fa fa-print"></i> Barcode</a>
+    <a href="/Urun/Detay/@Model.UrunID" class="btn btn-wide btn-success"><i class="fa fa-print"></i> Detay</a>
+    <a href="#" class="btn btn-wide btn-success"><i class="fa fa-print"></i> Giriş Formu</a>
+    <a href="#" class="btn btn-wide btn-success"><i class="fa fa-print"></i> Çıkış Formu</a>
+    <br /><br />
+    <div id="barcode_goster" class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="panel panel-flat">
+                @*<div class="panel-heading">
+                        <h4 class="panel-title">
+                           PRODEPO MAKİNA EKİPMAN GİRİŞ FORMU
+                        </h4>
+                    </div>*@
+
+                <div class="panel-body no-padding-bottom">
+                    <table class="table table-condensed" border="1">
+                        <thead>
+                            @*<tr>
+                                    <th colspan="3">Ürün Detayları</th>
+                                </tr>*@
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <center>
+                                        <img src="/Content/images/logo.png" /><br />
+                                        STOKCO YARI MAMÜL<br />
+                                        GİRİŞ FORMU
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <img src='@Url.Action("Borcode", "Urun", new { kod = Model.Barcod })' /><br />
+                                        <font size="4px">  <b> * @Model.Barcod * </b></font>
+                                    </center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <font size="2px">
+                                        <b> ÜRÜN ADI  </b>
+                                    </font>
+                                </td>
+                                <td>
+                                    @if (Model.UrunAdi != null)
+                                    {
+                                        <font size="2px">
+                                            <b>  @Model.UrunAdi </b>
+                                        </font>
+                                    }
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <font size="2px">
+                                        <b> ÜRÜN KODU  </b>
+                                    </font>
+                                </td>
+                                <td>
+                                    <font size="2px">
+                                        <b>  @Model.UrunKodu </b>
+                                    </font>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <font size="2px">
+                                        <b> STOK MİKTARI  </b>
+                                    </font>
+                                </td>
+                                <td>
+                                    @if (Model.StokMiktar != null)
+                                    {
+                                        <font size="2px">
+                                            <b> @Model.StokMiktar  </b>
+                                        </font>
+
+
+                                    }
+                                </td>
+                            </tr>
+                            @if (Session["id"] != null)
+                            {
+                                <tr>
+                                    <td>
+                                        <font size="2px">
+                                            <b>  ALIŞ FİYAT </b>
+                                        </font>
+                                    </td>
+                                    <td>
+
+                                        @if(Model.AlisFiyat != null)
+                                        {
+                                        <font size="2px">
+                                            <b> @Model.AlisFiyat  </b>
+                                        </font>
+                                        }
+                                        else
+                                        {
+                                        <b>Null</b>
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+                            @*<tr>
+                                <td>
+                                    <font size="2px">
+                                        <b>  SATIŞ FİYATI  </b>
+                                    </font>
+                                </td>
+                                <td>
+                                    @if (Model.SatisFiyat != null)
+                                    {
+                                        <font size="2px">
+                                            <b> @Model.SatisFiyat  </b>
+                                        </font>
+
+
+                                    }
+                                </td>
+                            </tr>*@
+                            <tr>
+                                <td>
+                                    <font size="2px">
+                                        <b>  GİRİŞ TARİHİ  </b>
+                                    </font>
+                                </td>
+                                <td>
+                                    @if (Model.GirisTarhi != null)
+                                    {
+                                        <font size="2px">
+                                            <b> @Model.GirisTarhi.Value.ToShortDateString()  </b>
+                                        </font>
+                                    }
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+    <a href="javascript:printDiv('barcode_goster');" class="btn btn-wide btn-success"><i class="fa fa-print"></i> Barcode Yazdır</a><br />
+</div>
+

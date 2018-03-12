@@ -1,0 +1,169 @@
+﻿@model StokTakip.Raflar
+@{
+    ViewBag.Title = "Duzenle";
+        Layout = "~/Views/Tasarim/_LayoutForm.cshtml";
+}
+
+
+<div class="header">
+    <div class="header-content">
+        <div class="page-title">
+            <i class="icon-select2 position-left"></i>Yarı Mamül Düzenleme Paneli
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/Admin/">Anasayfa</a></li>
+            <li>Yarı Mamül Ürün Düzenleme </li>
+            <li>Yarı Mamül Ürün</li>
+            <li class="active">Yarı Mamül Düzenleme Paneli</li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid page-content">
+
+    @*<h4>
+            Ürün Ekleme Paneli
+            <small class="display-block">Examples with basic options</small>
+        </h4>*@
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Yarı Mamül Düzenle</h5>
+
+                </div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" action="/Urun/Duzenle" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Ürün Resim</label>
+                            <img src="@Model.YariMamul.Resim" height="250" width="400" />
+                        </div>
+                        <div class="form-group">
+                            <label>Ürün Resim</label>
+                            <input type="file" name="Resim" />
+                        </div>
+                        <div class="form-group">
+                            <label>Barcode</label>
+                            <input type="search" class="form-control" name="Barcod" value="@Model.YariMamul.Barcod">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ürün Adı</label>
+                            <input type="search" class="form-control" name="UrunAdi" placeholder="Ürün Adını Giriniz" value="@Model.YariMamul.UrunAdi">
+                        </div>
+                        <div class="form-group">
+                            <label>Ürün Kodu</label>
+                            <input type="search" class="form-control" name="UrunKodu" placeholder="Ürün Kodunu Giriniz" value="@Model.YariMamul.UrunKodu">
+                        </div>
+
+                        @*<div class="form-group">
+                            <label>Mamül Seçiniz</label>
+                            <select multiple="multiple" name="RafID" data-placeholder="Select a State..." class="select-size-xlg">
+                                <option></option>
+                                @foreach (var item in Model.MamulList)
+                                {
+                                    int id = 0;
+                                    foreach (var item3 in Model.MamulM)
+                                    {
+                                        id = item3.KategoriID;
+                                    }
+                                    if (id != 0)
+                                    {
+                                        foreach (var item2 in Model.MamulM)
+                                        {
+                                            if (item.KategoriID != item2.KategoriID)
+                                            {
+                                                <option value="@item.KategoriID">@item.UrunAdi</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.KategoriID" selected="selected">@item.UrunAdi</option>
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.KategoriID">@item.UrunAdi</option>
+                                    }
+                                }
+                            </select>
+                        </div>*@
+
+                        <div class="form-group">
+                            <label>Raf Seçiniz</label>
+                            <select multiple="multiple" name="RafID" data-placeholder="Select a State..." class="select-size-xlg">
+                                <option></option>
+                                @try
+                                {
+                                    foreach (var item in Model.RafList)
+                                    {
+                                        int id = 0;
+                                        foreach (var item3 in Model.RafM)
+                                        {
+                                            id = item3.RafID;
+                                        }
+                                        if (id != 0)
+                                        {
+                                            foreach (var item2 in Model.RafM)
+                                            {
+                                                if (item.RafID != item2.RafID)
+                                                {
+                                                    <option value="@item.RafID">@item.RafAdi</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.RafID" selected="selected">@item.RafAdi</option>
+                                                }
+                                            }
+                                        }
+                                        @*else
+                                            {
+                                                <option value="@item.RafID">@item.RafAdi</option>
+                                            }*@
+                                    }
+                                }
+                                catch (Exception)
+                                {
+                                    
+                                }
+                            </select>
+                        </div>
+                        @*}
+                            else
+                            {
+                                @Html.Action("_KategoriList","Kategori")
+                            }*@
+
+                        <div class="form-group">
+                            <label>Stok Miktarı</label>
+                            <input type="search" class="form-control" name="StokMiktar" placeholder="Stok Miktarı Giriniz" value="@Model.Mamul.StokMiktar">
+                        </div>
+                        <div class="form-group">
+                            <label>Alış Fiyatı</label>
+                            <input type="search" class="form-control" name="AlisFiyat" placeholder="Alış Fiyatını Giriniz" value="@Model.Mamul.AlisFiyat">
+                        </div>
+                        <div class="form-group">
+                            <label>Satış Fiyatı</label>
+                            <input type="search" class="form-control" name="SatisFiyat" placeholder="Satış Fiyatı Giriniz" value="@Model.Mamul.SatisFiyat">
+                        </div>
+                        <div class="form-group">
+                            <label>Açıklama</label>
+                            <textarea rows="5" name="Aciklama" class="form-control" placeholder="Açıklama Giriniz">@Model.Mamul.Aciklama</textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary pull-right">
+                                Gönder <i class="fa fa-arrow-circle-right"></i>
+                            </button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @ViewBag.Durum
+            <!--Rightbar Chat-->
+            <!--/Rightbar Chat-->
+        </div>
+    </div>
+</div>
+

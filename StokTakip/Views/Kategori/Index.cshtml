@@ -1,0 +1,159 @@
+﻿@model IEnumerable<StokTakip.Models.Kategori>
+@{
+    ViewBag.Title = "Index";
+        Layout = "~/Views/Tasarim/_Layout.cshtml";
+
+}
+
+<div class="header">
+    <div class="header-content">
+        <div class="page-title">
+            <i class="icon-alignment-unalign position-left"></i>Mamül Ürünler
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/Admin/">Anasayfa</a></li>
+            <li>Mamül</li>
+            <li class="active">Mamül Ürünler</li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid page-content">
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Mamül Ürün</h5>
+        </div>
+
+        @*<div class="panel-body">
+                When displaying tables with a particularly large amount of data shown on each page, it can be useful to have the table's header and / or footer fixed to the top or bottom of the scrolling window. This lets your users quickly determine what each column refers to rather than needing to scroll back to the top of the table.
+            </div>*@
+
+        <div class="table-responsive">
+            <table class="table datatable datatable-header-basic">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ürün Adı</th>
+                        <th>Ürün Kodu</th>
+                        <th>Barcod</th>
+                        <th>Stok Miktarı</th>
+                        @if (Session["id"] != null)
+                        {
+                            <th>Alış Fiyatı</th>
+                            <th>Satış Fiyatı</th>
+                        }
+
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.KategoriID
+                            </td>
+                            <td>
+                                @if (item.UrunAdi!= null)
+                                {
+                                    @item.UrunAdi
+                                }
+                                else
+                                {
+                                    <b>Null</b>
+                                }
+                            </td>
+                            <td>
+                                @if (item.UrunKodu != null)
+                                {
+                                    @item.UrunKodu
+                                }
+                                else
+                                {
+                                    <b>Null</b>
+                                }
+
+                            </td>
+                            <td>
+                                @if (item.Barcod != null)
+                                {
+                                    @item.Barcod
+                                }
+                                else
+                                {
+                                    <b>Null</b>
+                                }
+
+                            </td>
+                            <td>
+                                @if (item.StokMiktar != null)
+                                {
+                                    @item.StokMiktar.Value
+                                }
+                                else
+                                {
+                                    <b>Null</b>
+                                }
+
+                            </td>
+
+@if (Session["id"] != null)
+{
+    <td>
+
+        @if (item.AlisFiyat != null)
+        {
+        @item.AlisFiyat
+        }
+        else
+        {
+        <b>Null</b>
+        }
+
+    </td>
+                            <td>
+                                @if (item.SatisFiyat != null)
+                                {
+                                   @item.SatisFiyat
+                                }
+                                else
+                                {
+                                    <b>Null</b>
+                                }
+                            </td>
+
+}
+                            <td>
+                                <a href="/Kategori/Detay/@item.KategoriID" class="edit-row">
+                                    <span class="label label-danger"> Detay</span>
+                                </a>&nbsp;&nbsp;
+                                <a href="/Kategori/Duzenle/@item.KategoriID" class="delete-row">
+                                    <span class="label label-info"> Düzenle </span>
+                                </a>&nbsp;&nbsp;
+                                <a href="/Kategori/Cikis/@item.KategoriID" class="delete-row">
+                                    <span class="label label-info">Çıkış </span>
+                                </a>
+                                @*<ul class="icons-list">
+                                        <li><a href="/Urun/Detay/@item.UrunID" data-toggle="modal" data-target="#invoice" title="Görüntülen"><i class="icon-eye2"></i></a></li>
+                                        <li class="dropdown">
+                                            <a href="datatable_advanced.html#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li><a href="/Urun/Detay/@item.UrunID"><i class="icon-file-download2"></i> Detay</a></li>
+                                                <li><a href="/Urun/Duzenle/@item.UrunID"><i class="icon-file-download2"></i> Düzenle</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="/Urun/GirisGonder/@item.UrunID"><i class="icon-trash"></i> [ Depo Giriş ]</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--Rightbar Chat-->
+    <!--/Rightbar Chat-->
+</div>

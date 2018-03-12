@@ -1,0 +1,124 @@
+﻿@model IEnumerable<StokTakip.Models.Urun>
+@{
+    ViewBag.Title = "TarihArasi";
+    Layout = "~/Views/Tasarim/_LayoutTablo.cshtml";
+}
+
+
+<div class="header">
+    <div class="header-content">
+        <div class="page-title">
+            <i class="icon-alignment-unalign position-left"></i> Tarihler Arası Sorgulama
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/Anasayfa/">Anasayfa</a></li>
+            <li>Tarihler Arası Sorgulama</li>
+            <li class="active">Tarihler Arası Sorgulama</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid page-content">
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Tarihler Arası Sorgulama</h5>
+        </div>
+
+        @*<div class="panel-body">
+            The DataTables extensions provide a number of pre-configured buttons which can be used without any customisation. However, you will inevitably wish to alter the buttons properties to suit your needs - this can be as simple as changing the displayed text, or as complex as providing a custom callback to modify the layout of a PDF document!
+        </div>*@
+
+
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h4 class="panel-title">Tarihler Arası Sorgulama</h4>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" action="/Rapor/TarihArasi" method="post">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2"> Başlangıç Tarihi Giriniz</label>
+                            <div class="col-lg-10">
+                                <div class="input-group">
+
+                                    <input type="date" id="form-field-mask-1" class="form-control input-mask-date" name="BaslangicTarihi">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">  Bitiş Tarihi Giriniz</label>
+                            <div class="col-lg-10">
+                                <div class="input-group">
+                                    <input type="date" id="form-field-mask-1" class="form-control input-mask-date" name="BitisTarihi">
+
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">
+                            Gönder <i class="fa fa-arrow-circle-right"></i>
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        @if (Model != null)
+    {
+        <div class="table-responsive">
+            <table class="table datatable-button-init-basic">
+                <thead>
+                    <tr>
+                        <th>Urun Adı</th>
+                        <th>Urun Kodu</th>
+                        <th>Stok Miktarı</th>
+                        <th>Alış Fiyatı</th>
+                        <th>Satış Fiyatı</th>
+                        <th>Giriş Tarihi</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.UrunAdi</td>
+                        <td>@item.UrunKodu</td>
+                        <td>@item.StokMiktar</td>
+                        <td>@item.AlisFiyat</td>
+                        <td>@item.SatisFiyat</td>
+                        <td>@item.GirisTarhi.Value.ToShortDateString()</td>
+                    </tr>
+            }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <div class="col-md-12">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            Toplam Stok Adet : @ViewBag.Stok  |  Toplam Alış Fiyatı : @ViewBag.Alis  |  Toplam Satış Fiyatı : @ViewBag.Satis |  Toplam Kar : @ViewBag.Kar
+                        </h4>
+                    </div>
+                    @*<div class="panel-body">
+                        <p>Toplam Ürün : </p>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+}
+else
+{
+    <p>Sonuç Bulunamadı..</p>
+}
+    </div>
+
+    <!--Rightbar Chat-->
+    <!--/Rightbar Chat-->
+</div>
+

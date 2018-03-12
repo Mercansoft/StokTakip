@@ -1,0 +1,121 @@
+﻿@model IEnumerable<StokTakip.Models.Urun>
+@{
+    ViewBag.Title = "TarihArasi";
+    Layout = "~/Views/Tasarim/_LayoutTablo.cshtml";
+}
+
+
+<div class="header">
+    <div class="header-content">
+        <div class="page-title">
+            <i class="icon-alignment-unalign position-left"></i> Tarihler Arası Sorgulama
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/Anasayfa/">Anasayfa</a></li>
+            <li>Tarihler Arası Sorgulama</li>
+            <li class="active">Tarihler Arası Sorgulama</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid page-content">
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Tarihler Arası Sorgulama</h5>
+        </div>
+
+        @*<div class="panel-body">
+                The DataTables extensions provide a number of pre-configured buttons which can be used without any customisation. However, you will inevitably wish to alter the buttons properties to suit your needs - this can be as simple as changing the displayed text, or as complex as providing a custom callback to modify the layout of a PDF document!
+            </div>*@
+
+
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h4 class="panel-title">Tarihler Arası Sorgulama</h4>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" action="/Rapor/TarihArasi" method="post">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2"> Başlangıç Tarihi Giriniz</label>
+                            <div class="col-lg-10">
+                                <div class="input-group">
+
+                                    <input type="date" id="form-field-mask-1" class="form-control input-mask-date" name="BaslangicTarihi">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">  Bitiş Tarihi Giriniz</label>
+                            <div class="col-lg-10">
+                                <div class="input-group">
+                                    <input type="date" id="form-field-mask-1" class="form-control input-mask-date" name="BitisTarihi">
+
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">
+                            Gönder <i class="fa fa-arrow-circle-right"></i>
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        @if (Model != null)
+        {
+            <div class="table-responsive">
+                <table class="table datatable-button-init-basic">
+                    <thead>
+                        <tr>
+                            <th>Firma</th>
+                            <th>Kiracı</th>
+                            <th>Sözleşme No</th>
+                            <th>Hukuk Bürosu</th>
+                            <th>Ekipman</th>
+                            <th>Gün Sayısı</th>
+                            <th>İç Alan /m3</th>
+                            <th>M3 Tutarı</th>
+                            <th>Dış Alan /m2</th>
+                            <th>M2 Tutarı</th>
+                            <th>Fatura Tutarı</th>
+                            <th>KDV Toplam Tutar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @*@foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.FirmaKod</td>
+                                <td>@item.Unvan</td>
+                                <td>@item.SozlesmeNo</td>
+                                <td>@item.HukukBurosu</td>
+                                <td>@item.MalCinsiAdi</td>
+                                <td>@item.GunSayisi</td>
+                                <td>@item.KapaliM3</td>
+                                <td>@string.Format("{0:c}", item.KapaliTutar)</td>
+                                <td>@item.AcikM2</td>
+                                <td>@string.Format("{0:c}", item.AcikTutar)</td>
+                                <td>@string.Format("{0:c}", item.FaturaTutar)</td>
+                                <td>@string.Format("{0:c}", item.KdvToplamTutar)</td>
+                            </tr>
+                        }*@
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>Sonuç Bulunamadı..</p>
+        }
+    </div>
+
+    <!--Rightbar Chat-->
+    <!--/Rightbar Chat-->
+</div>
+

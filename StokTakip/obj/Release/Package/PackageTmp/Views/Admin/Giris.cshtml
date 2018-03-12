@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html style="height:100%">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>StokCo - Stok Takip Sistemi |Yönetim Giriş Paneli</title>
+    <link href="/Tasarim/assets/images/favicon.ico" rel="apple-touch-icon" type="image/png" sizes="144x144">
+    <link href="/Tasarim/assets/images/favicon.ico" rel="apple-touch-icon" type="image/png" sizes="114x114">
+    <link href="/Tasarim/assets/images/favicon.ico" rel="apple-touch-icon" type="image/png" sizes="72x72">
+    <link href="/Tasarim/assets/images/favicon.ico" rel="apple-touch-icon" type="image/png">
+    <link href="/Tasarim/assets/images/favicon.ico" rel="icon" type="image/png">
+    <link href="/Tasarim/assets/images/favicon.ico" rel="shortcut icon">
+
+    <!-- Global stylesheets -->
+    <link type="text/css" rel="stylesheet" href="/Tasarim/assets/fonts/fonts.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/assets/icons/icomoon/icomoon.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/core.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/bootstrap-extended.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/plugins.css">
+    <link type="text/css" rel="stylesheet" href="/Tasarim/css/color-system.css">
+    <!-- /global stylesheets -->
+
+</head>
+<body style="height:100%; background:url('/Tasarim/assets/images/assets/login_bg.jpg') no-repeat 0 0; background-size:cover;">
+    <div class="login-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+            <!-- Simple login form -->
+            @*@using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()*@
+            <form action="/Admin/Giris" method="post">
+                <div class="panel panel-body login-form border-left border-left-lg border-left-info">
+                    <div class="text-center m-b-20">
+                        <div class="icon-object bg-info"><i class="icon-user"></i></div>
+                        <h5>StokCo Yönetici Giriş Paneli</h5>
+                    </div>
+
+                    <div class="form-group has-feedback has-feedback-left">
+                        @*@Html.EditorFor(model => model.KullaniciAdi, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kullanıcı Adınız" } })
+                            @Html.ValidationMessageFor(model => model.KullaniciAdi, "", new { @class = "text-danger" })*@
+                        <input type="text" class="form-control" placeholder="Kullanıcı Adınız" name="email" required="required">
+                        <div class="form-control-feedback">
+                            <i class="icon-user text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback has-feedback-left">
+                        @*@Html.PasswordFor(model => model.Sifre, new { htmlAttributes = new { @class = "form-control", @placeholder = "Şifreniz" } })
+                            @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger" })*@
+                        <input type="password" class="form-control" placeholder="Şifreniz" name="sifre" required="required">
+                        <div class="form-control-feedback">
+                            <i class="icon-lock text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="login-options">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="checkbox m-l-5">
+                                    <label>
+                                        @ViewBag.Hata
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 text-right m-t-10">
+                                <a href="/Admin/SifremiUnuttum">Şifremi Unuttum?</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info btn-labeled btn-labeled-right btn-block"><b><i class="icon-enter"></i></b> Giriş</button>
+                    </div>
+
+                    @*<div class="form-group">
+                            <button type="submit" class="btn btn-success btn-labeled btn-labeled-right btn-block"><b><i class="icon-user-plus"></i></b> Create an account</button>
+                        </div>*@
+                </div>
+
+            </form>
+            @*}*@
+            <!-- /simple login form -->
+            @Html.Action("_Footer", "Tasarim");
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+
+    <!-- Global scripts -->
+    <script type="text/javascript" src="/Tasarim/js/jquery.js"></script>
+    <script type="text/javascript" src="/Tasarim/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/Tasarim/js/forms/uniform.min.js"></script>
+    <script>
+        $(function () {
+            $(".styled, .multiselect-container input").uniform({
+                radioClass: 'choice'
+            });
+            $('input,textarea').focus(function () {
+                $(this).data('placeholder', $(this).attr('placeholder'))
+                    .attr('placeholder', '');
+            }).blur(function () {
+                $(this).attr('placeholder', $(this).data('placeholder'));
+            });
+        });
+    </script>
+    <!-- /global scripts -->
+</body>
+
+</html>
+
+
+

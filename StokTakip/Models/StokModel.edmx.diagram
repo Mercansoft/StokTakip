@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="da2ad3b307ef4867b79667a14442cf19" Name="Diagram1">
+        <EntityTypeShape EntityType="StokTakipModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StokTakipModel.Kategori" Width="1.5" PointX="3.375" PointY="8.25" />
+        <EntityTypeShape EntityType="StokTakipModel.KatUrun" Width="1.5" PointX="5.625" PointY="0.75" />
+        <EntityTypeShape EntityType="StokTakipModel.Raf" Width="1.5" PointX="3.375" PointY="12.875" />
+        <EntityTypeShape EntityType="StokTakipModel.RafUrun" Width="1.5" PointX="6.5" PointY="5" />
+        <EntityTypeShape EntityType="StokTakipModel.Urun" Width="1.5" PointX="3.375" PointY="2.875" />
+        <AssociationConnector Association="StokTakipModel.FK_KatUrun_Kategori" />
+        <AssociationConnector Association="StokTakipModel.FK_RafUrun_Kategori" />
+        <AssociationConnector Association="StokTakipModel.FK_KatUrun_Urun" />
+        <AssociationConnector Association="StokTakipModel.FK_RafUrun_Raf" />
+        <AssociationConnector Association="StokTakipModel.FK_RafUrun_Urun" />
+        <EntityTypeShape EntityType="StokTakipModel.Kullanici" Width="1.5" PointX="0.75" PointY="6.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,108 @@
+﻿@model StokTakip.Models.Kullanici
+@{
+    ViewBag.Title = "Profil";
+        Layout = "~/Views/Tasarim/_Layout.cshtml";
+}
+
+
+<div class="header">
+    <div class="header-content">
+        <div class="page-title">
+            <i class="icon-select2 position-left"></i> Kullanıcı Güncelleme Paneli
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/Anasayfa/">Anasayfa</a></li>
+            <li>Kullanıcı Güncelle </li>
+            <li>Kullanıcı</li>
+            <li class="active">Kullanıcı Güncelleme Paneli</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid page-content">
+    <form class="form-horizontal" action="/Admin/Guncelle" method="post" enctype="multipart/form-data">
+        @*@Html.AntiForgeryToken()*@
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h4 class="panel-title">Kullanıcı Güncelleme</h4>
+            </div>
+
+            <div class="panel-body">
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Resim</label>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input type="file" class="form-control" name="Resim">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Adı Soyadı</label>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input type="text" class="form-control" name="AdSoyad" value="@Model.AdSoyad">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Kullanıcı Adı</label>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input type="text" class="form-control" name="KullaniciAdi" value="@Model.KullaniciAdi">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Şifre</label>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input type="text" class="form-control" name="Sifre" value="@Model.Sifre">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">E-mail</label>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input type="text" class="form-control" name="Email" value="@Model.Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Yetki</label>
+                        <div class="col-lg-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" class="control-primary" name="Yetki" value="off" checked="@Model.Yetki">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    @*<label class="control-label col-lg-2">Yetki</label>
+        <input type="checkbox" class="form-control" name="Yetki">*@
+
+                </fieldset>
+
+            </div>
+        </div>
+
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <h5 class="no-margin-top"></h5>
+                <button type="submit" class="btn btn-success">Güncelle</button>
+
+            </div>
+        </div>
+    </form>
+
+
+</div>
+
+

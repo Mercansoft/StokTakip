@@ -1,0 +1,68 @@
+﻿@model StokTakip.Models.Raf
+@{
+    ViewBag.Title = "Duzenle";
+    Layout = "~/Views/Tasarim/_LayoutForm.cshtml";
+
+
+}
+
+
+<div class="header">
+    <div class="header-content">
+        <div class="page-title">
+            <i class="icon-select2 position-left"></i> Raf Ekleme Paneli
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/Anasayfa/">Anasayfa</a></li>
+            <li>Raf Ekleme </li>
+            <li>Raflar</li>
+            <li class="active">Raf Ekleme Paneli</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid page-content">
+    <form class="form-horizontal" action="/Raf/Duzenle" method="post">
+        @Html.AntiForgeryToken()
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h4 class="panel-title">Raf Ekle</h4>
+            </div>
+
+            <div class="panel-body">
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Raf Adı</label>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input type="text" class="form-control" name="RafAdi" value="@Model.RafAdi">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">Açıklama</label>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <textarea rows="8" cols="150" name="Aciklama" class="form-control" placeholder="Açıklama Giriniz">@Model.Aciklama</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+        </div>
+
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <h5 class="no-margin-top"></h5>
+                <button type="submit" class="btn btn-success">Güncelle</button>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+
+

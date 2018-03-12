@@ -1,0 +1,40 @@
+﻿
+mamül listesi nde arama kısmı oalcak,
+yarı mamüllerede aram kısmı olacak
+
+
+mamül girişine ve yarı mamül girişine raf kodu : eklenecek  birden fazla seçebilir.
+
+mamül çıkşış yaparken ayrı sayfada kaç adet mamüş ürün çıkacağını yazıp çıkış öyle yapcak. aynı sayfada mamül ürün e bağlı yarı mamüller listelenecek
+
+
+
+
+
+                    HttpCookie myCookie = new HttpCookie("Admin");
+                    myCookie.Expires = DateTime.Now.AddDays(1);
+
+
+
+
+28 OCAK 2018
+
+
+----------------------------------------------------
+
+admin girişleri için cookie giriş çıkışı yapılacak  +
+ana sayfada arama yapılacak +
+barcode kısmında satış fiyatı olmayacak. +
+giriş ve çıkış formu yapılacak.
+
+anasayfada barcode okuttuktan sonra orada stok düşme yapabilsin. +
+tüm yapılan stok eklemeleri ve çıkarmaların kayıtlarını başka bir tabloda tutalım.
+profil güncellemeye fotoğraf güncellemede yapılacak. + 
+
+RAPORLAR
+iki tarih arasında yarı mamüller için alış fiyatını toplamı ve satış fiyatının toplamı satış - alış = kar gösterme
+stokları (yarı mamül) listele toplam stokta bulunan malzemenin adetini dip toplamda göster +
+
+EXCEL
+yarı maüllere excel ile aktarım yapalım var olanları güncelleyecek olmayanları ekleyecek
+

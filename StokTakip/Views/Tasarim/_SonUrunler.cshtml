@@ -1,0 +1,45 @@
+﻿@model IEnumerable<StokTakip.Models.Kategori>
+<div class="panel panel-flat">
+    <div class="panel-heading">
+        <h4 class="panel-title">Son Eklenen Ürünler</h4>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover user-list">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ürün Adı</th>
+                    <th>Ürün Kodu</th>
+                    <th>Stok Miktarı</th>
+                    @if (Session["id"] != null)
+                    {
+                        <th>Alış Fiyatı</th>
+                        <th>Satış Fiyatı</th>
+                    }
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.KategoriID</td>
+                        <td>@item.UrunAdi</td>
+                        <td>@item.UrunKodu</td>
+                        <td>@item.StokMiktar</td>
+                 @if (Session["id"] != null)
+                 {
+                        <td>@item.AlisFiyat</td>
+                     
+                        <td>@item.SatisFiyat</td>
+                 }
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

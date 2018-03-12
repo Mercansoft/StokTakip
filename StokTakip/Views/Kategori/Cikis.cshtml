@@ -1,0 +1,66 @@
+﻿@model StokTakip.Models.Kategori
+@{
+    ViewBag.Title = "Cikis";
+        Layout = "~/Views/Tasarim/_Layout.cshtml";
+}
+
+
+<div class="header">
+    <div class="header-content">
+        <div class="page-title">
+            <i class="icon-select2 position-left"></i>Mamül Çıkış Paneli
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="/Admin/">Anasayfa</a></li>
+            <li>Mamül Çıkış Yap </li>
+            <li>Mamül Ürün Çıkış</li>
+            <li class="active">Mamül Ürün Çıkış</li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid page-content">
+
+    @*<h4>
+            Ürün Ekleme Paneli
+            <small class="display-block">Examples with basic options</small>
+        </h4>*@
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Mamül Stok</h5>
+
+                </div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" action="/Kategori/Cikis" method="post">
+                        <div class="form-group">
+                            <label>Stok Miktarı</label>
+                            <input type="search" class="form-control" name="StokMiktar" value="@Model.StokMiktar">
+                        </div>
+                        <div class="form-group">
+                            <label>Açıklama</label>
+                            <textarea rows="5" name="Aciklama" class="form-control" placeholder="Açıklama Giriniz">@Model.Aciklama</textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary pull-right">
+                                Gönder <i class="fa fa-arrow-circle-right"></i>
+                            </button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @if (Model != null)
+            {
+                @Html.Action("_YariMamul", "Kategori", new { id = Model.KategoriID });
+            }
+            <!--Rightbar Chat-->
+            <!--/Rightbar Chat-->
+        </div>
+    </div>
+</div>
+
+
